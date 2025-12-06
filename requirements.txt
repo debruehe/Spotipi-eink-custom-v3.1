@@ -3,3 +3,5 @@ redis
 async-timeout
 requests
 inky[rpi,example-depends]
+gpiod
+gpiodevice
