@@ -39,7 +39,7 @@ The display refresh time is ~30 seconds.
 
 * Download the install script
 ```
-wget https://raw.githubusercontent.com/Canterrain/spotipi-eink/main/setup.sh
+wget https://raw.githubusercontent.com/debruehe/Spotipi-eink-custom-v3.1/main/setup.sh
 ```
 ```
 chmod +x setup.sh

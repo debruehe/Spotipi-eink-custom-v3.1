@@ -22,17 +22,29 @@ echo
 echo "###### Update to the latest"
 sudo apt upgrade -y
 
-### 2) Install system packages
+### 2) Install system packages (includes build deps for Pillow/inky on Pi Zero W)
 echo
 echo "###### Ensure system packages are installed:"
 sudo apt-get install -y \
     python3-pip \
     python3-venv \
+    python3-dev \
     python3-numpy \
+    python3-requests \
+    python3-rpi.gpio \
+    python3-spidev \
+    python3-pil \
     git \
+    build-essential \
     libopenjp2-7 \
     libjpeg-dev \
-    python3-libgpiod
+    libtiff5 \
+    zlib1g-dev \
+    libfreetype6-dev \
+    liblcms2-dev \
+    libwebp-dev \
+    python3-libgpiod \
+    libgpiod-dev
 
 ### 3) Enable SPI & I2C
 echo
@@ -47,17 +59,21 @@ echo "...done"
 echo
 
 ### 4) Remove old spotipi-eink if found
-if [ -d "spotipi-eink" ]; then
+REPO_DIR="spotipi-eink"
+REPO_URL="https://github.com/debruehe/Spotipi-eink-custom-v3.1.git"
+
+if [ -d "$REPO_DIR" ]; then
     echo "Old installation found deleting it"
-    sudo rm -rf spotipi-eink
+    sudo rm -rf "$REPO_DIR"
 fi
 
 ### 5) Clone repo
 echo
-echo "###### Clone spotipy-eink git"
-git clone https://github.com/Canterrain/spotipi-eink
-echo "Switching into instalation directory"
-cd spotipi-eink
+echo "###### Clone spotipi-eink git"
+echo "Repo: ${REPO_URL}"
+git clone "${REPO_URL}" "${REPO_DIR}"
+echo "Switching into installation directory"
+cd "${REPO_DIR}"
 install_path=$(pwd)
 
 echo

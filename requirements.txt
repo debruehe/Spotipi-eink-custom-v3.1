@@ -1,7 +1,5 @@
 spotipy
 redis
 async-timeout
-pillow
+requests
 inky[rpi,example-depends]
-gpiod
-gpiodevice
