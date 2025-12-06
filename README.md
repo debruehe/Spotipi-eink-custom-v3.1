@@ -50,6 +50,17 @@ chmod +x setup.sh
 bash setup.sh
 ```
 
+### Updating an existing install
+If you already installed once, you can update in place (keeps your config and token):
+```
+wget -O update.sh https://raw.githubusercontent.com/debruehe/Spotipi-eink-custom-v3.1/main/update.sh
+chmod +x update.sh
+./update.sh              # defaults to ~/spotipi-eink or this script's folder
+# or, if your repo lives elsewhere:
+# ./update.sh /path/to/spotipi-eink
+```
+The update script stops the services, pulls the latest code, refreshes the Python venv dependencies, reloads systemd, and restarts any installed services.
+
 After the spotipi-eink is installed you will have 2 new systemd services:
 * spotipi-eink-display.service
 * spotipi-eink-buttons.service (only for Pimoroni displays)
