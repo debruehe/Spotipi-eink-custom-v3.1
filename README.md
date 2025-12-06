@@ -59,7 +59,7 @@ chmod +x update.sh
 # or, if your repo lives elsewhere:
 # ./update.sh /path/to/spotipi-eink
 ```
-The update script stops the services, pulls the latest code, refreshes the Python venv dependencies, reloads systemd, and restarts any installed services.
+The update script stops the services, pulls the latest code, refreshes the Python venv dependencies, ensures the systemd services exist (recreates them if missing), reloads systemd, and restarts the services. If the env file for Spotify credentials is missing, it will prompt for Client ID/Secret/Redirect URI.
 
 After the spotipi-eink is installed you will have 2 new systemd services:
 * spotipi-eink-display.service
